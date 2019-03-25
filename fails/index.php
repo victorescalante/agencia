@@ -9,7 +9,14 @@
     <div class="pt5">
       <div class="container">
         <div class="row">
-          <div class="col-sm-12 tr pa3">
+          <div class="col-sm-8 pa3">
+            <form action="index.php" method="GET">
+              <div class="form-group">
+                <input class="form-control" type="text" name="search" placeholder="Buscar">
+              </div>
+            </form>
+          </div>
+          <div class="col-sm-4 tr pa3">
             <a class="btn btn-primary" href="create.php">Crear Falla</a>
           </div>
           <div class="col-sm-12">
@@ -27,7 +34,13 @@
               <tbody>
                 <?php
                   include '../Classes/models.php';
-                  $fails = Fails::sql("Select * from :table order by id desc");
+
+                  if (!empty($_GET['search'])) {
+                    $query = "Select * from :table where problem like '%".$_GET['search']."%' order by id desc";
+                    $fails = Fails::sql($query);
+                  }else{
+                    $fails = Fails::sql("Select * from :table order by id desc");
+                  }
 
                   foreach ($fails as $fail) {
                     ?>
