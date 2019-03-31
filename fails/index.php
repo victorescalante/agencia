@@ -2,12 +2,15 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css" type="text/css">
     <title></title>
     <?php include('../page/headers.php') ?>
+    <img src="../picture/logo.png" width="300" height="100">
   </head>
   <body>
     <div class="pt5">
       <div class="container">
+        <a class="btn btn-secondary" href="../description/index.php">Inicio</a>
         <div class="row">
           <div class="col-sm-8 pa3">
             <form action="index.php" method="GET">
@@ -17,12 +20,12 @@
             </form>
           </div>
           <div class="col-sm-4 tr pa3">
-            <a class="btn btn-primary" href="create.php">Crear Falla</a>
+            <a class="btn btn-primary" href="create.php">Reportar Falla</a>
           </div>
           <div class="col-sm-12">
-            <table class="table">
+            <table class="table" style="color:#FDFEFE">
               <thead>
-                <tr>
+                <tr class="table-active">
                   <th scope="col">#</th>
                   <th scope="col">Fecha</th>
                   <th scope="col">Problema</th>
@@ -44,7 +47,7 @@
 
                   foreach ($fails as $fail) {
                     ?>
-                    <tr>
+                    <tr class="table-active">
                       <th scope="row"><?php echo $fail->id ?></th>
                       <td><?php echo $fail->date ?></td>
                       <td><?php echo $fail->problem ?></td>
