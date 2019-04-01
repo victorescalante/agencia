@@ -10,7 +10,7 @@
   <body>
     <div class="pt5">
       <div class="container">
-        <a class="btn btn-secondary" href="../description/index.php">Inicio</a>
+        <a class="btn btn-secondary" href="../products/index.php">Inicio</a>
         <div class="row">
           <div class="col-sm-8 pa3">
             <form action="index.php" method="GET">
