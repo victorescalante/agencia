@@ -29,7 +29,7 @@
                     </thead>
                     <tbody>
                       <?php
-                        include '../clasess/models.php';
+                        include '../classes/models.php';
                         $products = Products::all();
                         foreach ($products as $product) {
                        ?>

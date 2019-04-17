@@ -31,7 +31,7 @@
                 </thead>
                 <tbody class="table-active">
                   <?php
-                    include '../clasess/models.php';
+                    include '../classes/models.php';
                     $providers = Providers::all();
 
                     foreach ($providers as $provider) {

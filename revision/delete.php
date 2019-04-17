@@ -1,5 +1,5 @@
 <?php
-  include('../clasess/models.php');
+  include('../classes/models.php');
 
   $revision_id = $_GET['id'];
 

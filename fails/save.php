@@ -1,5 +1,5 @@
 <?php
-  include('../clasess/models.php');
+  include('../classes/models.php');
 
 
   $problem = $_POST['problem'];

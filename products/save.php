@@ -1,5 +1,5 @@
 <?php
-  include('../clasess/models.php');
+  include('../classes/models.php');
 
   $name = $_POST['name'];
   $brand = $_POST['brand'];

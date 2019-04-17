@@ -1,6 +1,6 @@
 <?php
 
-  include('../clasess/models.php');
+  include('../classes/models.php');
 
   $provider_id = $_POST['id'];
 

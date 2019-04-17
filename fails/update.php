@@ -1,6 +1,6 @@
 <?php
 
-  include('../clasess/models.php');
+  include('../classes/models.php');
 
   $fail_id = $_POST['id'];
 
