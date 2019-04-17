@@ -1,6 +1,6 @@
 
 <?php
-  include '../Classes/models.php';
+  include '../clasess/models.php';
   $revision = Revisions::retrieveByPK($_GET['revision_id']);
 
  ?>

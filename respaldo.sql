@@ -18,8 +18,7 @@
 --
 -- Table structure for table `fails`
 --
-
-DROP TABLE IF EXISTS `fails`;
+use ruth;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `fails` (
@@ -46,7 +45,6 @@ UNLOCK TABLES;
 -- Table structure for table `product_properties`
 --
 
-DROP TABLE IF EXISTS `product_properties`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `product_properties` (
@@ -71,7 +69,6 @@ UNLOCK TABLES;
 -- Table structure for table `product_revision`
 --
 
-DROP TABLE IF EXISTS `product_revision`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `product_revision` (
@@ -87,7 +84,6 @@ CREATE TABLE `product_revision` (
 -- Dumping data for table `product_revision`
 --
 
-LOCK TABLES `product_revision` WRITE;
 /*!40000 ALTER TABLE `product_revision` DISABLE KEYS */;
 INSERT INTO `product_revision` (`id`, `property_id`, `revision_id`, `property_value`) VALUES (19,2,14,'Momento'),(20,3,14,'Frenos'),(21,4,14,'Fuga'),(22,2,15,'Momento'),(23,3,15,'Frenos'),(24,4,15,'Fuga'),(25,2,11,'Momento 11'),(26,3,11,'Frenos 11'),(27,4,11,'Fuga 11'),(28,2,12,'Momento 12'),(29,3,12,'Frenos 12'),(30,4,12,'Fuga 12'),(31,2,16,'Momento new'),(32,3,16,'Frenos new'),(33,4,16,'Fuga new'),(34,2,17,'dsadsa'),(35,3,17,'dsad'),(36,4,17,'dsa'),(37,1,18,'a'),(38,2,18,'b'),(39,3,18,'c'),(40,4,18,'d'),(41,5,18,'e'),(42,1,19,'ok'),(43,2,19,'ok'),(44,3,19,'ok'),(45,4,19,'ng'),(46,5,19,'ok'),(47,1,20,'ok'),(48,1,21,'ok');
 /*!40000 ALTER TABLE `product_revision` ENABLE KEYS */;
@@ -97,7 +93,6 @@ UNLOCK TABLES;
 -- Table structure for table `products`
 --
 
-DROP TABLE IF EXISTS `products`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `products` (
@@ -116,7 +111,6 @@ CREATE TABLE `products` (
 -- Dumping data for table `products`
 --
 
-LOCK TABLES `products` WRITE;
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
 INSERT INTO `products` (`id`, `name`, `brand`, `agency`, `code`, `funcionality`, `date_last_manteiner`) VALUES (3,'Equipo 1','dsadsads','mitsubishi','codigo1',NULL,NULL),(4,'Equipo2','Marca2','hyundai','codigo2',NULL,NULL),(5,'Aspiradora','Trupper','hyundai','codigo3',NULL,NULL),(6,'Prueba equipo 1','Marca2','hyundai','Codigo01',NULL,NULL),(7,'Prueba quipo2','MArca2','hyundai','codigo2',NULL,NULL),(8,'dsad','jhkjh','hyundai','nhjkjh',NULL,NULL),(9,'dsadasdsadsa','asdsad','mitsubishi','dsadsa',NULL,NULL),(10,'sadas','dsadsa','hyundai','dsadsa',NULL,NULL),(11,'sadas','dsadsa','hyundai','dsadsa',NULL,NULL),(12,'sadas','dsadsa','hyundai','dsadsa',NULL,NULL),(13,'sadas','dsadsa','hyundai','dsadsa',NULL,NULL),(14,'sadas','dsadsa','hyundai','dsadsa',NULL,NULL),(15,'sadas','dsadsa','hyundai','dsadsa',NULL,NULL),(16,'sadas','dsadsa','hyundai','dsadsa',NULL,NULL),(17,'sadas','dsadsa','hyundai','dsadsa',NULL,NULL),(18,'sadas','dsadsa','hyundai','dsadsa',NULL,NULL),(19,'sadas','dsadsa','hyundai','dsadsa',NULL,NULL),(20,'Equipo ejemplo X','MarcaX','continental_metepec','CodigoX',NULL,NULL),(21,'Equipo XC','MarcaXC','hyundai','CodigoXC',NULL,NULL),(22,'CCC','CCC','continental_metepec','CCC',NULL,NULL),(23,'ds','dsa','continental_metepec','dsa',NULL,NULL);
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
@@ -126,7 +120,6 @@ UNLOCK TABLES;
 -- Table structure for table `properties`
 --
 
-DROP TABLE IF EXISTS `properties`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `properties` (
@@ -150,7 +143,6 @@ UNLOCK TABLES;
 -- Table structure for table `providers`
 --
 
-DROP TABLE IF EXISTS `providers`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `providers` (
@@ -178,7 +170,6 @@ UNLOCK TABLES;
 -- Table structure for table `revisions`
 --
 
-DROP TABLE IF EXISTS `revisions`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `revisions` (

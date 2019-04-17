@@ -1,5 +1,5 @@
 <?php
-  include('../Classes/models.php');
+  include('../clasess/models.php');
 
   $comment = $_POST['comment'];
   $product_id = $_POST['product_id'];

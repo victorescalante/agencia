@@ -29,7 +29,7 @@
               <div class="pa3">
                   <p>Selecciona las propiedades a verificar del producto</p>
                   <?php
-                  include('../classes/models.php');
+                  include('../clasess/models.php');
                     $properties = Properties::all();
                     foreach ($properties as $property) {
                   ?>

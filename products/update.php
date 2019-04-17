@@ -1,5 +1,5 @@
 <?php
-  include ('../Classes/models.php');
+  include ('../clasess/models.php');
 
   $product_id = $_POST['id'];
 

@@ -36,7 +36,7 @@
               </thead>
               <tbody>
                 <?php
-                  include '../Classes/models.php';
+                  include '../clasess/models.php';
 
                   if (!empty($_GET['search'])) {
                     $query = "Select * from :table where problem like '%".$_GET['search']."%' order by id desc";

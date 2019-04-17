@@ -1,5 +1,5 @@
 <?php
-  include('../classes/models.php');
+  include('../clasess/models.php');
 
   $provider_id = $_GET['id'];
 

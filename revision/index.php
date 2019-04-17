@@ -27,7 +27,7 @@
              </thead>
              <tbody>
                <?php
-               include '../Classes/models.php';
+               include '../clasess/models.php';
                $revisions = Revisions::sql("select * from :table where product_id = ".$_GET['product_id']);
                foreach ($revisions as $revision) {
                 ?>

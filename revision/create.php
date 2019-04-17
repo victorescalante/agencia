@@ -26,7 +26,7 @@
               <input class="form-control" type="text" name="comment" placeholder="Agrega un comentario">
             </div>
             <?php
-              include '../Classes/models.php';
+              include '../clasess/models.php';
               $product_properties = Product_Properties::sql("select * from :table where product_id=".$_GET['product_id']);
 
               $id_properties = [];
