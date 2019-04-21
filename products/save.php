@@ -5,22 +5,15 @@
   $brand = $_POST['brand'];
   $agency = $_POST['agency'];
   $code = $_POST['code'];
+  $category = $_POST['category'];
 
   $product = new Products();
   $product->name = $name;
   $product->brand = $brand;
   $product->agency = $agency;
   $product->code = $code;
+  $product->category_id = $category;
   $product->save();
 
-  if(!empty($_POST['properties'])){
-    foreach ($_POST['properties'] as $property) {
-      $product_property = new Product_Properties();
-      $product_property->product_id = $product->id;
-      $product_property->property_id = $property;
-      $product_property->save();
-    }
-  }
-
-  header('location:index.php');
+  header('location:modify.php?id='.$product->id);
  ?>

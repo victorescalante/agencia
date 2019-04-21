@@ -10,12 +10,12 @@
     <link rel="stylesheet" href="style.css" type="text/css">
     <meta charset="utf-8">
     <?php include('../page/headers.php') ?>
-    <img src="../picture/logo.png" width="300" height="100">
-    <title></title>
+    <title>Modificación de revisión</title>
   </head>
   <body>
    <div class="pt5">
      <div class="container">
+       <?php include('../page/nav.php') ?>
        <div class="row">
          <div class="col-sm-12">
            <div class="pv3">
@@ -32,18 +32,16 @@
             <input type="hidden" name="revision_id" value="<?php echo $_GET['revision_id'] ?>">
             <div class="form-group">
               <label for="">Comentario</label>
-              <input class="form-control" type="text" name="comment" value="<?php echo $revision->comment ?>" placeholder="Agrega un comentario">
+              <textarea class="form-control" name="comment"><?php echo $revision->comment ?></textarea>
             </div>
             <?php
-              $product_properties = Product_Properties::sql("select * from :table where product_id=".$_GET['product_id']);
 
-              $id_properties = [];
-              foreach ($product_properties as $property) {
-                $id_properties[] = $property->property_id;
-              }
+              $product = Products::retrieveByPK($_GET['product_id']);
+              $category_properties = Property_Category::sql('select * from :table where category_id = '.$product->category_id);
+              // var_dump($category_properties);
 
-              foreach ($id_properties as $id_property ) {
-                $property = Properties::sql("select * from :table where id=".$id_property);
+              foreach ($category_properties as $relation ) {
+                $property = Properties::sql("select * from :table where id=".$relation->property_id );
                 $value_property = Product_Revision::sql("select property_value from :table where property_id=".$property[0]->id." and revision_id=".$revision->id);
                 ?>
                  <div class="form-group">

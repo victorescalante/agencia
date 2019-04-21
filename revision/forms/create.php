@@ -4,6 +4,6 @@
     <input type="text" name="problem" class="form-control" id="Problem" placeholder="Revisión">
   </div>
 
-  <button type="submit" class="btn btn-primary" name="button">Agregar</button>
+  <button type="submit" class="btn btn-success" name="button">Agregar</button>
 
 </form>

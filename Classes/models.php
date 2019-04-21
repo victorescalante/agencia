@@ -14,6 +14,7 @@ class Fails extends SimpleOrm { }
 class Revisions extends SimpleOrm { }
 class Products extends SimpleOrm { }
 class Properties extends SimpleOrm { }
+class Categories extends SimpleOrm { }
 class Product_Properties extends SimpleOrm {
   protected static
       $table = 'product_properties';
@@ -22,4 +23,8 @@ class Product_Revision extends SimpleOrm {
  protected static
      $table = 'product_revision';
 }
+class Property_Category extends SimpleOrm {
+  protected static
+      $table = 'property_category';
+ }
  ?>

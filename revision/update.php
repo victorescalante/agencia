@@ -11,9 +11,11 @@ $revision->comment = $comment;
 $revision->date_updated = date("Y-m-d H:i:s");
 $revision->save();
 
-$product_properties = Product_Properties::sql("select * from :table where product_id=".$product_id);
+$product = Products::retrieveByPK($product_id);
+$category_properties = Property_Category::sql('select * from :table where category_id = '.$product->category_id);
+// var_dump($category_properties);
 
-foreach ($product_properties as  $property) {
+foreach ($category_properties as  $property) {
   $product_revision = Product_Revision::sql("select * from :table where revision_id=".$revision->id." and property_id=".$property->property_id);;
   if (count($product_revision) > 0) {
     $product_revision[0]->property_value = $_POST['properties'][$property->property_id];
