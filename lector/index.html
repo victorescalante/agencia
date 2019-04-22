@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Scanner</title>
+</head>
+<body>
+<style>
+    canvas {
+        display: none;
+    }
+    hr {
+        margin-top: 32px;
+    }
+    input[type="file"] {
+        display: block;
+        margin-bottom: 16px;
+    }
+    div {
+        margin-bottom: 16px;
+    }
+    video {
+      width: 100%;
+    }
+    body{
+      position: relative;
+    }
+    .absolute_title{
+      position: absolute;
+      z-index: 50;
+      background: white;
+      width: 100%;
+      padding: 15px;
+      text-align: center;
+      margin-top: -5px;
+    }
+
+
+.loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+.loading-bar {
+  display: inline-block;
+  width: 10px;
+  height: 35px;
+  border-radius: 4px;
+  animation: loading 1s ease-in-out infinite;
+}
+.loading-bar:nth-child(1) {
+  background-color: #3498db;
+  animation-delay: 0;
+}
+.loading-bar:nth-child(2) {
+  background-color: #c0392b;
+  animation-delay: 0.09s;
+}
+.loading-bar:nth-child(3) {
+  background-color: #f1c40f;
+  animation-delay: .18s;
+}
+.loading-bar:nth-child(4) {
+  background-color: #27ae60;
+  animation-delay: .27s;
+}
+
+@keyframes loading {
+  0% {
+    transform: scale(1);
+  }
+  20% {
+    transform: scale(1, 2.2);
+  }
+  40% {
+    transform: scale(1);
+  }
+}
+
+.background{
+  position: absolute;
+  z-index: 100;
+  background: white;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  display: none;
+}
+
+.background.active{
+  display: block;
+}
+
+</style>
+<h1 class="absolute_title">Escaneo de inventario</h1>
+<div>
+    <!-- <b>Device has camera: </b> -->
+    <!-- <span id="cam-has-camera"></span> -->
+    <br>
+    <video muted playsinline id="qr-video"></video>
+</div>
+<b>Codígo QR detectado: </b>
+<span id="cam-qr-result">Ninguno</span>
+<br>
+<b>último detectado: </b>
+<span id="cam-qr-result-timestamp"></span>
+<hr>
+
+<div id="background" class="background">
+  <div class="loading">
+  <div class="loading-bar"></div>
+  <div class="loading-bar"></div>
+  <div class="loading-bar"></div>
+  <div class="loading-bar"></div>
+</div>
+</div>
+
+<script type="module">
+    import QrScanner from "./qr-scanner.min.js";
+    QrScanner.WORKER_PATH = './qr-scanner-worker.min.js';
+
+    const video = document.getElementById('qr-video');
+    const camHasCamera = document.getElementById('cam-has-camera');
+    const camQrResult = document.getElementById('cam-qr-result');
+    const camQrResultTimestamp = document.getElementById('cam-qr-result-timestamp');
+    const fileSelector = document.getElementById('file-selector');
+    const fileQrResult = document.getElementById('file-qr-result');
+
+    function setResult(label, result) {
+        label.textContent = result;
+        camQrResultTimestamp.textContent = new Date().toString();
+        label.style.color = 'teal';
+        clearTimeout(label.highlightTimeout);
+        label.highlightTimeout = setTimeout(() => label.style.color = 'inherit', 100);
+        var element = document.getElementById("background");
+        element.classList.add("active");
+        window.location = "../revision/scan.php?code="+result;
+    }
+
+    function errorResult(label, result) {
+        label.textContent = result;
+        camQrResultTimestamp.textContent = new Date().toString();
+        label.style.color = 'teal';
+        clearTimeout(label.highlightTimeout);
+        label.highlightTimeout = setTimeout(() => label.style.color = 'inherit', 100);
+    }
+
+    // ####### Web Cam Scanning #######
+
+    QrScanner.hasCamera().then(hasCamera => camHasCamera.textContent = hasCamera);
+
+    const scanner = new QrScanner(video, result => setResult(camQrResult, result));
+    scanner.start();
+
+    document.getElementById('inversion-mode-select').addEventListener('change', event => {
+        scanner.setInversionMode(event.target.value);
+    });
+
+    // ####### File Scanning #######
+
+    fileSelector.addEventListener('change', event => {
+        const file = fileSelector.files[0];
+        if (!file) {
+            return;
+        }
+        QrScanner.scanImage(file)
+            .then(result => setResult(fileQrResult, result))
+            .catch(e => errorResult(fileQrResult, e || 'No QR code found.'));
+    });
+
+</script>
+</body>
+</html>

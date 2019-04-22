@@ -9,10 +9,19 @@
   <body>
    <div class="pt5">
      <div class="container">
-       <?php include('../page/nav.php') ?>
-       <a class="btn btn-secondary" href="../products/index.php">Inicio</a>
+       <?php include('../page/nav.php');
+              include '../classes/models.php';
+              $product = Products::retrieveByPK($_GET['product_id']);
+      ?>
+       <div class="col-sm-12">
+         <h2>Revisiones de <?php echo $product->name ?></h2>
+       </div>
+       <div class="col-sm-12 pa3">
+         <a class="btn btn-secondary" href="../products/">Productos</a>
+         <a class="btn btn-secondary" href="../category_properties/">Categorías</a>
+       </div>
        <div class="col-sm-12 tr pa3">
-         <a class="btn btn-primary" href="create.php?product_id=<?php echo $_GET['product_id'] ?>">Nueva Revisión</a>
+         <a class="btn btn-success" href="create.php?product_id=<?php echo $_GET['product_id'] ?>">Nueva Revisión</a>
        </div>
        <div class="row">
          <div class="col-sm-12">
@@ -27,7 +36,6 @@
              </thead>
              <tbody>
                <?php
-               include '../classes/models.php';
                $revisions = Revisions::sql("select * from :table where product_id = ".$_GET['product_id']);
                foreach ($revisions as $revision) {
                 ?>
